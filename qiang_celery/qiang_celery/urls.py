@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # url(r'^$', view.hello),
     path('hello/', view.hello),
-    url('^users/', include('users.urls'))
-    # url(r'^users/$', include(users.urls))
+    path('index/', view.index),
+    url('^users/', include('users.urls')),
+    # url(r'^users/$', include(users.urls)),
 ]

@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print("base_dir==>", BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,6 +27,7 @@ SECRET_KEY = 't_t4s*z892^#6d&!_$t%_b!k#s1w_w7xevkb($j7frt#dko-xp'
 # DEBUG = True
 DEBUG = False
 
+# 充许访问的ip地址
 ALLOWED_HOSTS = ['127.0.0.1']
 
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 添加的应用
     'users.apps.UsersConfig',
 ]
 
@@ -56,7 +59,7 @@ ROOT_URLCONF = 'qiang_celery.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR+"/templates", ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,3 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# 配置broker
+BORKER_URL = 'redis://127.0.0.1:6379/0'
+BORKER_TRANSPORT = 'redis'
+
